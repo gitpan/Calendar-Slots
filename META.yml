@@ -10,7 +10,8 @@ meta-spec:
 name: Calendar-Slots
 requires:
   Carp: 0
+  DateTime::Format::Strptime: 0
   Moose: 0
   MooseX::AttributeHelpers: 0
   Test::More: 0.9
-version: 0.02
+version: 0.03

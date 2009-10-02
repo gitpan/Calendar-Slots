@@ -1,3 +1,6 @@
+0.03  Wed, 01 Oct 2009 09:00:04 +0100
+  * Span ranges over dates: start_date, end_date
+
 0.02  Wed, 30 Sep 2009 01:45:04 +0100
   * Fix dependencies
 
