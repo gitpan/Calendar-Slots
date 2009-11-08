@@ -1,5 +1,5 @@
 package Calendar::Slots;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Moose;
 use MooseX::AttributeHelpers;
@@ -188,7 +188,7 @@ Calendar::Slots - Manage time slots
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -291,6 +291,8 @@ an ALPHA release that allows me to get somethings done at $work...
 =item * Create subclasses of Calendar::Slots::Slot for each slot type. 
 
 =item * Better input formatting based on DateTime objects and the such.
+
+=back
 
 =head1 AUTHOR
 

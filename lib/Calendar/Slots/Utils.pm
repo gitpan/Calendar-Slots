@@ -53,7 +53,7 @@ Calendar::Slots::Utils - Calendar::Slots internal machinery
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
@@ -68,6 +68,8 @@ Nothing here to look at. You may want to take a look at L<Calendar::Slot>.
 =head2 check_time
 
 =head2 format_args
+
+=head2 parse_dt
 
 =head1 AUTHOR
 
