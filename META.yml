@@ -14,4 +14,5 @@ requires:
   Moose: 0
   MooseX::AttributeHelpers: 0
   Test::More: 0.9
-version: 0.04
+  YAML: 0
+version: 0.05

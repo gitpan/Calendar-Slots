@@ -1,3 +1,6 @@
+0.05  Thu Nov 12 09:49:06 CET 2009
+  * Fixed failed tests with missing dependency II
+
 0.04  Sun, 08 Nov 2009 10:34:04 +0100
   * Fixed failed tests with missing dependency
 
