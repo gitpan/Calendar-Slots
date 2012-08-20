@@ -1,6 +1,6 @@
 package Calendar::Slots::Utils;
 {
-  $Calendar::Slots::Utils::VERSION = '0.10';
+  $Calendar::Slots::Utils::VERSION = '0.11';
 }
 use strict;
 use warnings;
@@ -15,7 +15,7 @@ require Exporter;
 
 sub format_args {
     my %args = @_;
-    $args{$_} =~ s{[\-|\:|\s]}{}g for grep !/name/, keys %args;
+    $args{$_} =~ s{[\-|\:|\s]}{}g for grep !/name|data/, keys %args;
     return %args;
 }
 
@@ -56,7 +56,7 @@ Calendar::Slots::Utils - Calendar::Slots internal machinery
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 

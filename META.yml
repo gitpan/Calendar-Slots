@@ -16,6 +16,8 @@ requires:
   Carp: 0
   DateTime::Format::Strptime: 0
   Moose: 0
+  Moose::Util::TypeConstraints: 0
   MooseX::AttributeHelpers: 0
   Test::More: 0.9
-version: 0.10
+  namespace::autoclean: 0
+version: 0.11

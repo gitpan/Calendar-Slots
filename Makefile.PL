@@ -23,10 +23,12 @@ my %WriteMakefileArgs = (
     'Carp' => '0',
     'DateTime::Format::Strptime' => '0',
     'Moose' => '0',
+    'Moose::Util::TypeConstraints' => '0',
     'MooseX::AttributeHelpers' => '0',
-    'Test::More' => '0.9'
+    'Test::More' => '0.9',
+    'namespace::autoclean' => '0'
   },
-  'VERSION' => '0.10',
+  'VERSION' => '0.11',
   'test' => {
     'TESTS' => 't/*.t'
   }

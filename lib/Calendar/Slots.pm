@@ -1,6 +1,6 @@
 package Calendar::Slots;
 {
-  $Calendar::Slots::VERSION = '0.10';
+  $Calendar::Slots::VERSION = '0.11';
 }
 use Moose;
 use MooseX::AttributeHelpers;
@@ -186,7 +186,7 @@ Calendar::Slots - Manage time slots
 
 =head1 VERSION
 
-version 0.10
+version 0.11
 
 =head1 SYNOPSIS
 
