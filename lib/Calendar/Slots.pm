@@ -1,6 +1,7 @@
 package Calendar::Slots;
-our $VERSION = '0.05';
-
+{
+  $Calendar::Slots::VERSION = '0.10';
+}
 use Moose;
 use MooseX::AttributeHelpers;
 use Carp;
@@ -25,9 +26,6 @@ has 'slots' => (
         'clear'   => 'clear_slots',
     }
 );
-
-use YAML;
-sub _dump {  print Dump @_ }
 
 sub slot {
     my $self = shift;
@@ -188,7 +186,7 @@ Calendar::Slots - Manage time slots
 
 =head1 VERSION
 
-version 0.05
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -291,8 +289,6 @@ an ALPHA release that allows me to get somethings done at $work...
 =item * Create subclasses of Calendar::Slots::Slot for each slot type. 
 
 =item * Better input formatting based on DateTime objects and the such.
-
-=back
 
 =head1 AUTHOR
 

@@ -1,4 +1,7 @@
 package Calendar::Slots::Slot;
+{
+  $Calendar::Slots::Slot::VERSION = '0.10';
+}
 use Moose;
 use Carp;
 use Calendar::Slots::Utils;
@@ -60,8 +63,10 @@ sub contains {
     if ( $type eq $self->type ) {
         return if $when ne $self->when;
     }
-    elsif ( $type eq 'date' and $self->type eq 'weekday' ) {
-        return;
+    elsif ( $type eq 'date' && $self->type eq 'weekday' ) {
+        $when = parse_dt( '%Y%m%d', $when )->wday;
+        $when == 0 and $when = 7;
+        return if $when ne $self->when;
     }
     elsif( $when ne $self->weekday ) {
         return ;
@@ -154,7 +159,7 @@ Calendar::Slots::Slot - the time-slot object
 
 =head1 VERSION
 
-version 0.05
+version 0.10
 
 =head1 SYNOPSIS
 
@@ -217,4 +222,3 @@ This library is free software. You can redistribute it and/or modify it under
 the same terms as Perl itself.
 
 =cut
-

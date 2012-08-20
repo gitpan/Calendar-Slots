@@ -2,22 +2,54 @@
 use strict;
 use warnings;
 
-use ExtUtils::MakeMaker;
 
-WriteMakefile(
-  DISTNAME  => 'Calendar-Slots',
-  NAME      => 'Calendar::Slots',
-  AUTHOR    => 'Rodrigo\ de\ Oliveira\ \<rodrigolive\@gmail\.com\>',
-  ABSTRACT  => 'Create\ calendars\ with\ reserved\ slots',
-  VERSION   => '0.05',
-  EXE_FILES => [ qw() ],
-  (eval { ExtUtils::MakeMaker->VERSION(6.31) } ? (LICENSE => 'perl') : ()),
-  PREREQ_PM    => {
-    "Test::More" => '0.9',
-    "MooseX::AttributeHelpers" => '0',
-    "YAML" => '0',
-    "DateTime::Format::Strptime" => '0',
-    "Moose" => '0',
-    "Carp" => '0',
+
+use ExtUtils::MakeMaker 6.30;
+
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'Create calendars with reserved slots',
+  'AUTHOR' => 'Rodrigo de Oliveira <rodrigolive@gmail.com>',
+  'BUILD_REQUIRES' => {},
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.30'
   },
+  'DISTNAME' => 'Calendar-Slots',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'Calendar::Slots',
+  'PREREQ_PM' => {
+    'Carp' => '0',
+    'DateTime::Format::Strptime' => '0',
+    'Moose' => '0',
+    'MooseX::AttributeHelpers' => '0',
+    'Test::More' => '0.9'
+  },
+  'VERSION' => '0.10',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
 );
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+
