@@ -9,28 +9,28 @@ use ExtUtils::MakeMaker 6.30;
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'Create calendars with reserved slots',
-  'AUTHOR' => 'Rodrigo de Oliveira <rodrigolive@gmail.com>',
-  'BUILD_REQUIRES' => {},
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.30'
+  "ABSTRACT" => "Create calendars with reserved slots",
+  "AUTHOR" => "Rodrigo de Oliveira <rodrigolive\@gmail.com>",
+  "BUILD_REQUIRES" => {},
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'Calendar-Slots',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'Calendar::Slots',
-  'PREREQ_PM' => {
-    'Carp' => '0',
-    'DateTime::Format::Strptime' => '0',
-    'Moose' => '0',
-    'Moose::Util::TypeConstraints' => '0',
-    'MooseX::AttributeHelpers' => '0',
-    'Test::More' => '0.9',
-    'namespace::autoclean' => '0'
+  "DISTNAME" => "Calendar-Slots",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "Calendar::Slots",
+  "PREREQ_PM" => {
+    "Carp" => 0,
+    "DateTime::Format::Strptime" => 0,
+    "Moose" => 0,
+    "Moose::Util::TypeConstraints" => 0,
+    "MooseX::AttributeHelpers" => 0,
+    "Test::More" => "0.9",
+    "namespace::autoclean" => 0
   },
-  'VERSION' => '0.11',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.12",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 

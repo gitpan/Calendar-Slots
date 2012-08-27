@@ -1,6 +1,6 @@
 package Calendar::Slots::Slot;
 {
-  $Calendar::Slots::Slot::VERSION = '0.11';
+  $Calendar::Slots::Slot::VERSION = '0.12';
 }
 use Moose;
 use Carp;
@@ -163,7 +163,7 @@ Calendar::Slots::Slot - the time-slot object
 
 =head1 VERSION
 
-version 0.11
+version 0.12
 
 =head1 SYNOPSIS
 

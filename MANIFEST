@@ -9,5 +9,6 @@ lib/Calendar/Slots.pm
 lib/Calendar/Slots/Slot.pm
 lib/Calendar/Slots/Utils.pm
 t/basic.t
+t/overlap.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
