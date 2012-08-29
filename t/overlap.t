@@ -114,7 +114,9 @@ sub _dump {  require YAML; warn YAML::Dump( @_ ) }
     $cal->slot( weekday=>6, start=>'00:00', end=>'24:00', name=>'B' );
     $cal->slot( date=>20120901, start=>'1330', end=>'1800', name=>'X' ); 
     $cal->slot( date=>20120901, start=>'2200', end=>'2400', name=>'N' );  # TEST: last has precedence
+        # warn $cal->as_table;
     $cal = $cal->week_of( '2012-08-29' );  # wed; monday on 8/27
+        # warn $cal->as_table;
     is $cal->num_slots , 4, 'last - first unsorted date four date materialized';
     my $slot = $cal->find( weekday=>6, time=>'2100' );
     is $slot->start , '1800', 'split slot B';
@@ -126,8 +128,9 @@ sub _dump {  require YAML; warn YAML::Dump( @_ ) }
     $cal->slot( weekday=>6, start=>'00:00', end=>'24:00', name=>'B' );
     $cal->slot( date=>20120901, start=>'1330', end=>'1800', name=>'X' ); 
     $cal->slot( date=>20120901, start=>'1730', end=>'2030', name=>'N' );  # TEST: last has precedence
+        # warn $cal->as_table;
     $cal = $cal->week_of( '2012-08-29' );  # wed; monday on 8/27
-    #print $cal->as_table;
+        # warn $cal->as_table;
     is $cal->num_slots , 4, 'last - first unsorted date four date materialized';
     my $slot = $cal->find( weekday=>6, time=>'19:00' );
     is $slot->start , '1730', 'split slot N';
@@ -146,6 +149,41 @@ sub _dump {  require YAML; warn YAML::Dump( @_ ) }
     my $slot = $cal->find( weekday=>6, time=>'16:00' );
     is $slot->end , '1730', 'split slot N';
     is $slot->name , 'B', 'split slot N';
+}
+{
+    my $cal = new Calendar::Slots;
+    $cal->slot( date=>20120827, start=>'0000', end=>'2400', name=>'N' ); 
+    $cal->slot( weekday=>1, start=>'15:00', end=>'22:30', name=>'N' );
+    $cal->slot( weekday=>1, start=>'0700', end=>'1500', name=>'U' );
+    # warn $cal->as_table();
+    $cal = $cal->week_of( '2012-08-27' );  # wed; monday on 8/27
+    # warn $cal->as_table();
+    is $cal->num_slots , 1, 'materialized overall';
+    my $slot = $cal->find( weekday=>1, time=>'16:00' );
+    is $slot->type , 'date', 'found overall';
+}
+{
+    my $cal = new Calendar::Slots;
+    $cal->slot( date=>20120827, start=>'0000', end=>'2400', name=>'N' ); 
+    $cal->slot( weekday=>1, start=>'0000', end=>'0700', name=>'B' );
+    #$cal->slot( weekday=>1, start=>'0700', end=>'1500', name=>'U' );
+    #$cal->slot( weekday=>1, start=>'1500', end=>'2400', name=>'B' );
+     # warn $cal->as_table();
+    $cal = $cal->week_of( '2012-08-27' );  # wed; monday on 8/27
+     # warn $cal->as_table();
+    is $cal->num_slots , 1, 'materialized overall';
+    my $slot = $cal->find( weekday=>1, time=>'16:00' );
+    is $slot->type , 'date', 'found overall';
+}
+{
+    my $cal = new Calendar::Slots;
+    $cal->slot( date=>20120827, start=>'0000', end=>'2400', name=>'U' ); 
+    $cal->slot( weekday=>1, start=>'15:00', end=>'22:30', name=>'N' );
+    $cal = $cal->week_of( '2012-08-27' );  # wed; monday on 8/27
+    is $cal->num_slots , 1, 'materialized overall';
+    my $slot = $cal->find( weekday=>1, time=>'16:00' );
+    is $slot->type , 'date', 'found overall';
+    is $slot->name , 'U', 'found overall';
 }
 
 done_testing;

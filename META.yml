@@ -20,4 +20,4 @@ requires:
   MooseX::AttributeHelpers: 0
   Test::More: 0.9
   namespace::autoclean: 0
-version: 0.14
+version: 0.15

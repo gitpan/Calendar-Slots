@@ -1,6 +1,6 @@
 package Calendar::Slots::Slot;
 {
-  $Calendar::Slots::Slot::VERSION = '0.14';
+  $Calendar::Slots::Slot::VERSION = '0.15';
 }
 use Moose;
 use Carp;
@@ -35,6 +35,7 @@ around BUILDARGS => sub {
       || ( $args{type} eq 'date' ? $args{date} : $args{weekday} );
 	delete $args{date};
 	delete $args{weekday};
+
 	$class->$orig(%args);
 };
 
@@ -166,7 +167,7 @@ Calendar::Slots::Slot - the time-slot object
 
 =head1 VERSION
 
-version 0.14
+version 0.15
 
 =head1 SYNOPSIS
 
