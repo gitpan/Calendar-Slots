@@ -1,6 +1,6 @@
 package Calendar::Slots::Utils;
 {
-  $Calendar::Slots::Utils::VERSION = '0.12';
+  $Calendar::Slots::Utils::VERSION = '0.14';
 }
 use strict;
 use warnings;
@@ -56,7 +56,7 @@ Calendar::Slots::Utils - Calendar::Slots internal machinery
 
 =head1 VERSION
 
-version 0.12
+version 0.14
 
 =head1 SYNOPSIS
 

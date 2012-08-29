@@ -1,18 +1,19 @@
 package Calendar::Slots::Slot;
 {
-  $Calendar::Slots::Slot::VERSION = '0.12';
+  $Calendar::Slots::Slot::VERSION = '0.14';
 }
 use Moose;
 use Carp;
 use Moose::Util::TypeConstraints;
 use namespace::autoclean;
 
-has name    => ( is => 'rw', isa => 'Str' );  # the slot given name
-has when    => ( is => 'rw', isa => 'Int', required=>1, );  # weekday num or date
-has type    => ( is => 'rw', isa => enum([qw/weekday date/]), required=>1 );  # type of slot
-has start   => ( is => 'rw', isa => 'Int' );  # start time
-has end     => ( is => 'rw', isa => 'Int' );  # end time
-has data    => ( is => 'rw', isa => 'Any' );  # free data for your own use
+has name     => ( is => 'rw', isa => 'Str' );  # the slot given name
+has when     => ( is => 'rw', isa => 'Int', required=>1, );  # weekday num or date
+has type     => ( is => 'rw', isa => enum([qw/weekday date/]), required=>1 );  # type of slot
+has start    => ( is => 'rw', isa => 'Int' );  # start time
+has end      => ( is => 'rw', isa => 'Int' );  # end time
+has data     => ( is => 'rw', isa => 'Any' );  # free data for your own use
+has _weekday => ( is => 'rw', isa => 'Num' );  # cache
 
 use Calendar::Slots::Utils;
 
@@ -95,8 +96,10 @@ sub weekday {
 	my $self = shift;
 	my $day;
 	if( $self->type eq 'date' ) {
+        my $wk = $self->_weekday;
+        return $wk if defined $wk;
 		my $dt = DateTime->new( $self->ymd_hash );
-		return $dt->strftime('%u');
+		return $self->_weekday( $dt->strftime('%u') ); # cache
 	}
 	else {
 		return $self->when;
@@ -146,7 +149,7 @@ sub reschedule {
 sub numeric {
     my $self = shift;
 	if( $self->type eq 'date' ) {
-		sprintf("%08d%04d%04d", $self->when, $self->start, $self->end );
+		sprintf("%01d%08d%04d%04d", $self->weekday, 0, $self->start, $self->end );
 	} else {
 		sprintf("%01d%08d%04d%04d", $self->when, 0, $self->start, $self->end );
 	}
@@ -163,7 +166,7 @@ Calendar::Slots::Slot - the time-slot object
 
 =head1 VERSION
 
-version 0.12
+version 0.14
 
 =head1 SYNOPSIS
 

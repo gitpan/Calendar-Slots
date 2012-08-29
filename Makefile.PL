@@ -28,7 +28,7 @@ my %WriteMakefileArgs = (
     "Test::More" => "0.9",
     "namespace::autoclean" => 0
   },
-  "VERSION" => "0.12",
+  "VERSION" => "0.14",
   "test" => {
     "TESTS" => "t/*.t"
   }
